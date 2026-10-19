@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">GNIX IA</string>
+
+    <!-- Home -->
+    <string name="home_about">Início</string>
+    <string name="home_history">Histórico</string>
+    <string name="home_settings">Ajustes</string>
+    <string name="home_search">Pesquisar</string>
+
+    <!-- Apresentação -->
+    <string name="about_intro">Seu assistente de IA no pulso, rodando direto no relógio.</string>
+    <string name="about_feature_chat_title">Pergunte</string>
+    <string name="about_feature_chat_description">Toque na lupa e pergunte por voz ou teclado.</string>
+    <string name="about_feature_offline_title">Offline</string>
+    <string name="about_feature_offline_description">O modelo Gemma roda no relógio, sem internet.</string>
+    <string name="about_feature_history_title">Histórico</string>
+    <string name="about_feature_history_description">Suas perguntas e respostas ficam salvas para consultar depois.</string>
+
+    <!-- Configurações -->
+    <string name="settings_title">Configurações</string>
+    <string name="settings_clear_history">Apagar histórico</string>
+    <string name="settings_version">Versão %1$s</string>
+
+    <!-- Chat -->
+    <string name="chat_title">GNIX IA</string>
+    <string name="chat_send">Enviar</string>
+    <string name="chat_input_label">Mensagem</string>
+    <string name="chat_typing_placeholder">…</string>
+    <string name="chat_model_preparing">Preparando modelo…</string>
+    <string name="chat_model_loading">Carregando modelo…</string>
+    <string name="chat_model_unsupported">Este relógio não é compatível com o modelo de IA (processador 32 bits).</string>
+    <string name="chat_model_error">Não foi possível carregar o modelo: %1$s</string>
+    <string name="chat_reply_error">Algo deu errado: %1$s</string>
+
+    <!-- Histórico -->
+    <string name="history_title">Histórico</string>
+    <string name="history_empty">Nenhuma conversa ainda</string>
+    <string name="history_clear">Limpar</string>
+    <string name="history_clear_confirm">Apagar todo o histórico?</string>
+    <string name="history_question">Pergunta</string>
+    <string name="history_answer">Resposta</string>
+</resources>
