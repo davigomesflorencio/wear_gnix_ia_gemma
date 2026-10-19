@@ -23,7 +23,8 @@ android {
     buildTypes {
         release {
             optimization {
-                enable = false
+                // R8: code shrinking, obfuscation and optimization, plus resource shrinking
+                enable = true
             }
         }
     }
