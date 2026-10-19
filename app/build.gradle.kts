@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.ui)
     implementation(libs.foundation)
     implementation(libs.ui.graphics)
+    implementation(libs.ui.text.google.fonts)
     implementation(libs.ui.tooling.preview)
     implementation(libs.wear.tooling.preview)
     implementation(libs.google.litertlm.android)

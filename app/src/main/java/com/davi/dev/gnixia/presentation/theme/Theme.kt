@@ -35,6 +35,7 @@ fun GnixiaTheme(
 ) {
     MaterialTheme(
         colorScheme = GnixiaColorScheme,
+        typography = GnixiaTypography,
         content = content
     )
 }
