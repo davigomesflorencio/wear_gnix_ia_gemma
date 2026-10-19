@@ -6,6 +6,15 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+### Adicionado
+
+- Fonte Inter Tight em todo o app, baixada pelo Google Play Services via Google Fonts (`ui-text-google-fonts`), sem arquivos de fonte no APK. Enquanto a fonte baixa, ou se o relógio estiver sem internet ou sem Play Services, o app usa a fonte padrão do sistema.
+
+### Alterado
+
+- O build de release agora usa R8 com minificação, ofuscação e otimização de código e recursos (`optimization { enable = true }`).
+- Keep rule para a LiteRT-LM (`com.google.ai.edge.litertlm.**`): a biblioteca não traz regras próprias e o código nativo acessa as classes pelo nome via JNI.
+
 ## [1.0] - 2026-10-19
 
 Primeira versão do app.
