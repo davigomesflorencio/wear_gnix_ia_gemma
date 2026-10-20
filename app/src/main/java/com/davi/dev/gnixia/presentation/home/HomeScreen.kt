@@ -13,7 +13,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -202,7 +203,12 @@ private fun HomeTile(
                 painter = painterResource(iconRes),
                 contentDescription = null,
                 tint = contentColor,
-                modifier = Modifier.size(iconSize)
+                // On small screens the icon shrinks so the label always fits:
+                // weighted children are measured last, with the space left over
+                modifier = Modifier
+                    .weight(1f, fill = false)
+                    .sizeIn(maxWidth = iconSize, maxHeight = iconSize)
+                    .aspectRatio(1f, matchHeightConstraintsFirst = true)
             )
             Spacer(modifier = Modifier.height(2.dp))
             Text(
