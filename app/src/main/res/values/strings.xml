@@ -28,7 +28,6 @@
     <string name="chat_typing_placeholder">…</string>
     <string name="chat_model_preparing">Preparando modelo…</string>
     <string name="chat_model_loading">Carregando modelo…</string>
-    <string name="chat_model_unsupported">Este relógio não é compatível com o modelo de IA (processador 32 bits).</string>
     <string name="chat_model_error">Não foi possível carregar o modelo: %1$s</string>
     <string name="chat_reply_error">Algo deu errado: %1$s</string>
 

@@ -8,7 +8,6 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.davi.dev.gnixia.GnixiaApplication
 import com.davi.dev.gnixia.domain.model.ModelStatus
-import com.davi.dev.gnixia.domain.model.UnsupportedDeviceException
 import com.davi.dev.gnixia.domain.usecase.InitializeModelUseCase
 import com.davi.dev.gnixia.domain.usecase.SendMessageUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,7 +25,6 @@ sealed interface ModelState {
     data object Preparing : ModelState
     data object Loading : ModelState
     data object Ready : ModelState
-    data object Unsupported : ModelState
     data class Failed(val reason: String) : ModelState
 }
 
@@ -61,8 +59,6 @@ class ChatViewModel(
                     pendingInput = null
                     send(it)
                 }
-            } catch (e: UnsupportedDeviceException) {
-                _modelState.value = ModelState.Unsupported
             } catch (e: Throwable) {
                 // Throwable: native load failures (UnsatisfiedLinkError) are Errors, not Exceptions
                 _modelState.value = ModelState.Failed(e.message.orEmpty())
@@ -74,8 +70,7 @@ class ChatViewModel(
     fun send(userInput: String) {
         if (_isGenerating.value) return
         if (_modelState.value != ModelState.Ready) {
-            val canStillLoad = _modelState.value.let { it != ModelState.Unsupported && it !is ModelState.Failed }
-            if (canStillLoad) pendingInput = userInput
+            if (_modelState.value !is ModelState.Failed) pendingInput = userInput
             return
         }
 

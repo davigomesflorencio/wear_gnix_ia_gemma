@@ -4,9 +4,6 @@
 # For more details, see
 #   https://d.android.com/r/tools/r8/keep-rules
 
-# LiteRT-LM ships no consumer keep rules, and its native library (liblitertlm_jni.so)
-# looks up classes, constructors, getters and callback methods of this package by name
-# through JNI (e.g. InputData, BenchmarkInfo, EmbeddingResponse, LiteRtLmJniException,
-# the Jni*Callback interfaces). Renaming or removing any of them breaks model loading
-# and inference at runtime, so the whole package is kept as-is.
--keep class com.google.ai.edge.litertlm.** { *; }
+# The JNI bridge (LlamaBridge) needs no rule: the default rules already keep the
+# names of classes with native methods, and libgnixia-llm.so never calls back into
+# Kotlin by name.

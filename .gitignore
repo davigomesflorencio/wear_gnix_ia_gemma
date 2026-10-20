@@ -18,5 +18,6 @@
 .cxx
 local.properties
 
-# On-device model: too large for GitHub (see README)
-/app/src/main/assets/model.litertlm
+# On-device models: too large for GitHub (see README)
+/app/src/main/assets/*.gguf
+/app/src/main/assets/*.litertlm

@@ -7,6 +7,7 @@ plugins {
 
 android {
     namespace = "com.davi.dev.gnixia"
+    ndkVersion = "28.2.13676358"
     compileSdk {
         version = release(37)
     }
@@ -18,6 +19,25 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        ndk {
+            // armeabi-v7a: 32-bit watches such as the Galaxy Watch 7;
+            // x86_64: Wear OS emulator
+            abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86_64")
+        }
+        externalNativeBuild {
+            cmake {
+                // llama.cpp is tens of times slower at -O0, so it's always built
+                // optimized, even in the app's debug build
+                arguments += "-DCMAKE_BUILD_TYPE=Release"
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+            version = "3.31.6"
+        }
     }
 
     buildTypes {
@@ -58,7 +78,6 @@ dependencies {
     implementation(libs.ui.text.google.fonts)
     implementation(libs.ui.tooling.preview)
     implementation(libs.wear.tooling.preview)
-    implementation(libs.google.litertlm.android)
     implementation(libs.wear.input)
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.runtime.compose)

@@ -128,7 +128,6 @@ private fun ChatScreenContent(
 private fun ModelStatusRow(modelState: ModelState) {
     val errorText = when (modelState) {
         is ModelState.Failed -> stringResource(R.string.chat_model_error, modelState.reason)
-        ModelState.Unsupported -> stringResource(R.string.chat_model_unsupported)
         else -> null
     }
     if (errorText != null) {
