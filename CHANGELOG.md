@@ -9,11 +9,18 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 ### Adicionado
 
 - Fonte Inter Tight em todo o app, baixada pelo Google Play Services via Google Fonts (`ui-text-google-fonts`), sem arquivos de fonte no APK. Enquanto a fonte baixa, ou se o relógio estiver sem internet ou sem Play Services, o app usa a fonte padrão do sistema.
+- Suporte a relógios 32 bits (`armeabi-v7a`), como o Galaxy Watch 7: o chat agora funciona neles.
 
 ### Alterado
 
-- O build de release agora usa R8 com minificação, ofuscação e otimização de código e recursos (`optimization { enable = true }`).
-- Keep rule para a LiteRT-LM (`com.google.ai.edge.litertlm.**`): a biblioteca não traz regras próprias e o código nativo acessa as classes pelo nome via JNI.
+- O motor de IA passou da LiteRT-LM para o **llama.cpp** (submódulo na tag v0.7.0, compilado via NDK/CMake), com o modelo **Gemma 3 270M em GGUF Q4_0**. A interface do motor (`LlmEngine`) continua igual para o resto do app.
+- O APK passou a incluir bibliotecas nativas para `armeabi-v7a`, `arm64-v8a` e `x86_64`.
+- O build de release agora usa R8 com minificação, ofuscação e otimização de código e recursos (`optimization { enable = true }`). A ponte JNI não precisa de keep rule própria.
+
+### Removido
+
+- LiteRT-LM e o modelo `.litertlm`. Na primeira abertura após a atualização, o app apaga a cópia antiga do modelo (~300 MB).
+- O aviso de "relógio não compatível" para aparelhos 32 bits, que deixou de ser necessário.
 
 ## [1.0] - 2026-10-19
 
