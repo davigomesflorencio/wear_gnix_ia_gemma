@@ -42,6 +42,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("debug")
             optimization {
                 // R8: code shrinking, obfuscation and optimization, plus resource shrinking
                 enable = true
